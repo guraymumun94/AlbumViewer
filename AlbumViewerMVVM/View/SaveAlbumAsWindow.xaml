@@ -1,0 +1,35 @@
+﻿<Window x:Class="AlbumViewerMVVM.View.SaveAlbumAsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:AlbumViewerMVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="Save Album As" Height="180" Width="480" MinWidth="480" MinHeight="180" MaxWidth="480" MaxHeight="180" Icon="/AlbumViewerMVVM;component/Resources/appIcon1.JPG">
+
+    <Window.DataContext>
+        <vm:SaveAlbumAsViewModel/>
+    </Window.DataContext>
+    
+    <Grid Height="171" HorizontalAlignment="Center">
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Name}" BorderBrush="{Binding NameColor}" HorizontalAlignment="Left" Height="20" Margin="80,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277"/>
+        <Label Content="Location:" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Location}" BorderBrush="{Binding LocationColor}" HorizontalAlignment="Left" Height="20" Margin="80,55,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="277"/>
+        <Button Command="{Binding BrowseCommand}" Content="Browse..." Margin="367,55,18,0" Width="75" VerticalAlignment="Top" Height="20"/>
+        <Button Command="{Binding CancelCommand}" Content="Cancel" Margin="367,106,18,38" Width="75" VerticalAlignment="Top" Height="20"/>
+        <Button Command="{Binding OkCommand}" Content="OK" Margin="282,106,103,0" Width="75" VerticalAlignment="Top" Height="20"/>
+
+        <Canvas Margin="10,91,414,45" HorizontalAlignment="Center" Width="36" Height="36">
+            <Ellipse Visibility="{Binding Vis}" Fill="#FF8F0000" Width="36" Height="36" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Visibility="{Binding Vis}" Height="36" Width="36" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Foreground="White" FontSize="24" FontWeight="Bold">
+                <TextBlock.Text>
+                    X
+                </TextBlock.Text>
+            </TextBlock>
+        </Canvas>
+        <TextBlock Text="{Binding ErrorText, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Vis}" HorizontalAlignment="Left" Margin="50,91,0,0" TextWrapping="Wrap" Height="35" Width="218" Foreground="Red" VerticalAlignment="Top" FontWeight="Bold"/>
+
+
+    </Grid>
+</Window>

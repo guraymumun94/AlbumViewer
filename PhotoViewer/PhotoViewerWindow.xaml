@@ -1,0 +1,67 @@
+﻿<Window x:Class="AlbumViewer.PhotoViewerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AlbumViewer"
+        mc:Ignorable="d"
+        Title="Photo Viewer" Height="700" Width="950" MinWidth="950" MinHeight="700" Icon="Resources/appIcon.jpg">
+
+    <Grid>
+        <Viewbox ClipToBounds="True" Margin="0,0,0,64">
+            <Image x:Name="image" RenderTransformOrigin="0.5,0.5">
+                <Image.LayoutTransform>
+                    <TransformGroup>
+                        <ScaleTransform x:Name="scaleTransform"/>
+                        <RotateTransform x:Name="rotateTransform"/>
+                    </TransformGroup>
+                </Image.LayoutTransform>
+            </Image>
+        </Viewbox>
+
+        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Button x:Name="btnLeft" Grid.Column="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Click="btnLeft_Click" Background="White">
+                <Image Source="Resources/left.jpg" Height="40" Width="40" ToolTip="Rotate the image 90 degrees to the left."/>
+            </Button>
+            
+            <Button x:Name="btnRight" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Click="btnRight_Click" Background="White">
+                <Image Source="Resources/right.jpg" Height="40" Width="40" ToolTip="Rotate the image 90 degrees to the right."/>
+            </Button>
+            
+            <Button x:Name="btnPrevious" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Click="btnPrevious_Click" Background="White">
+                <Image Source="Resources/previous.jpg" Height="40" Width="40" ToolTip="Go to the previous image of the album."/>
+            </Button>
+            
+            <Button x:Name="btnNext" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Click="btnNext_Click" Background="White">
+                <Image Source="Resources/next.jpg" Height="40" Width="40" ToolTip="Go to the next image of the album."/>
+            </Button>
+        </Grid>
+
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnBackground" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="White" Click="btnBackground_Click">
+                <Image Source="Resources/setBackground.jpg" Height="40" Width="40" ToolTip="Set the image as a desktop background."/>
+            </Button>
+        </Grid>
+        
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Button x:Name="btnFlip" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="White" Click="btnFlip_Click">
+                <Image Source="Resources/flip.jpg" Height="40" Width="40" ToolTip="Flip the image."/>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
